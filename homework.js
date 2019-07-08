@@ -145,13 +145,25 @@ function minimum(nums){
 // Note 2: Selection sort can be implemented using one array. Read the explanation at
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
+// function selectionSort(nums){
+//     let copy = nums.slice(0);
+//     let sorted = [];
+//     while (copy.length > 0){
+//         const min = minimum(copy);
+//         sorted.push(min);
+//         copy.splice(copy.indexOf(min), 1);
+//     }
+//     return sorted
+// }
 function selectionSort(nums){
-    let copy = nums.slice(0);
-    let sorted = [];
-    while (copy.length > 0){
-        const min = minimum(copy);
-        sorted.push(min);
-        copy.splice(copy.indexOf(min), 1);
+    let i = nums.length;
+    while (i > 0){
+        const min = minimum(nums.slice(0, i));
+        nums.splice(nums.indexOf(min), 1);
+        nums.push(min);
+        i -= 1;
     }
-    return sorted
+
+    return nums;
+
 }
